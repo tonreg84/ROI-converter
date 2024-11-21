@@ -1,13 +1,32 @@
 UMI ROI converter
 Autor: tonreg, team UMI, CNP-CHUV Lausanne
  
-Version 01 - 05.11.2024
+Version 02 - 21.11.2024
 
-Main program: UMI ROI converter_v01.py
+This program is used to convert ROI files between "Possum" and "imageJ" formats.
+File extensions: 
+Possum: .reg
+imageJ: .roi (single ROI), .zip (multiple ROIs)
 
-This program is used to convert ROI files between "Possum" and "imageJ" formats. Filters out non-elliptic ROIs.
+A scaling factor and x-y shift can be applied to the ROIs.
 
-Possibility to apply a scaling factor and x-y shift to the ROIs.
+!!! Important !!!
+When reading imageJ ROIs:
 
-!!! Non-elliptic ROIs are filtered out during conversion.
+- ROIs of type "Freehand" will be assigned as type "Polygone"
 
+When writing imageJ ROIs:
+
+- Cannot write ROIs of type "line". Dummy "point" ROI is written to file instead to keep ROI numbering.
+
+When converting from imageJ to Possum format:
+
+- Possum does not support "angle" and "line" ROIs.
+  Such ROIs will not be written to the "Possum" ROI file
+
+- In imageJ format, several points can be handled as single ROI. 
+  This is not the case for Possum, where every point is a ROI.
+  Thus the number of ROIs might increase.
+
+- In Possum format, polygone ROIs can have a maximum of 94 corners.
+  Polygone ROIs with more then 94 corners will not be written to the file.
