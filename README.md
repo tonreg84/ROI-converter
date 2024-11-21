@@ -11,6 +11,7 @@ imageJ: .roi (single ROI), .zip (multiple ROIs)
 A scaling factor and x-y shift can be applied to the ROIs.
 
 !!! Important !!!
+
 When reading imageJ ROIs:
 
 - ROIs of type "Freehand" will be assigned as type "Polygone"
